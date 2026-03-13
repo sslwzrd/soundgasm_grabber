@@ -1,0 +1,25 @@
+.vscode/
+
+# Python leftovers
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments (The "Tools" folder)
+venv/
+env/
+.env
+pip-log.txt
+pip-delete-this-directory.txt
+
+# PyInstaller leftovers (The "Construction" debris)
+build/
+dist/
+*.spec
+
+# macOS specific files
+.DS_Store
+
+# User-specific data (The downloaded audio)
+soundgasm_*/
+*.m4a/

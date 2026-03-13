@@ -1,0 +1,30 @@
+name: App Builder
+on: [push] # MEANING: run code everytime I upload
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, macos-latest]
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11.9'
+
+      - name: Install Libraries
+        run: pip install requests beautifulsoup4 customtkinter pyinstaller
+
+      - name: Build with PyInstaller
+        run: pyinstaller --noconsole --onefile --name "SoundgasmGrabber" main.py
+
+      - name: Upload Finished App
+        uses: actions/upload-artifact@v4
+        with:
+          name: App-${{ matrix.os }}
+          path: dist/
